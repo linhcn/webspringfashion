@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans> 
+
+ 	<!-- allow user annotation -->
+	<mvc:annotation-driven />
+	<!-- scan controller to send request -->
+	<context:component-scan base:package="com.linhcn.spring.*"/>
+	<!-- hander response -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- connection database and configure -->
+	<bean id="dataSources" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/managersach" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+	</bean>
+	
+		
+</beans>
